@@ -1,0 +1,321 @@
+/* Kahroba site — local stylesheet only. No external fonts, scripts, or trackers. */
+
+:root {
+  color-scheme: light dark;
+  --amber: #e0a040;
+  --amber-deep: #c4892a;
+  --bg: #f6f1e8;
+  --bg-elev: #fffbf4;
+  --text: #1c1812;
+  --muted: #6b6256;
+  --line: #e4d6c0;
+  --link: #8a5a12;
+  --link-hover: #6e460c;
+  --shadow: 0 10px 30px rgba(28, 24, 18, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14110e;
+    --bg-elev: #1d1914;
+    --text: #f4efe6;
+    --muted: #b5a894;
+    --line: #3a3228;
+    --link: #e0a040;
+    --link-hover: #f0c06a;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
+}
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  background: var(--bg-elev);
+  color: var(--text);
+  padding: 0.5rem 0.75rem;
+  z-index: 10;
+}
+
+.skip:focus {
+  top: 0.75rem;
+}
+
+.topbar {
+  height: 4px;
+  background: var(--amber);
+}
+
+header,
+main,
+footer {
+  width: min(42rem, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.brand:hover,
+.brand:focus-visible {
+  color: inherit;
+}
+
+.mark {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+nav a {
+  font-size: 0.95rem;
+}
+
+nav a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+main {
+  flex: 1;
+  padding: 2.25rem 0 3rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2.25rem 1.25rem 2.5rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.hero .mark-lg {
+  width: 3.25rem;
+  height: 3.25rem;
+  margin: 0 auto 1rem;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-family: ui-serif, Palatino, Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--amber-deep);
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tagline {
+    color: var(--amber);
+  }
+}
+
+.lede {
+  margin: 1.15rem auto 0;
+  max-width: 32rem;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.15rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--amber);
+  color: #1c1812;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  color: #1c1812;
+  background: #ebb05a;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  color: var(--text);
+  border-color: var(--amber);
+}
+
+h2 {
+  margin: 2rem 0 0.7rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+h2:first-child {
+  margin-top: 0;
+}
+
+p,
+ul {
+  margin: 0 0 1rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+li + li {
+  margin-top: 0.35rem;
+}
+
+.faq {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.faq article {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  padding: 1rem 1.1rem 0.15rem;
+}
+
+.faq h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.02rem;
+}
+
+.note {
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--amber);
+  background: var(--bg-elev);
+  border-radius: 0 0.7rem 0.7rem 0;
+}
+
+footer {
+  padding: 1.25rem 0 2rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+footer p {
+  margin: 0 0 0.35rem;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 36rem) {
+  header,
+  main,
+  footer {
+    width: min(42rem, calc(100% - 1.75rem));
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    justify-content: flex-start;
+  }
+}
