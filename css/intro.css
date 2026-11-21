@@ -224,7 +224,7 @@ html.js.intro-fx-on .intro-rings {
   82%, 100% { opacity: 0; }
 }
 
-.intro-skip {
+.intro-skip-btn {
   position: absolute;
   right: max(0.85rem, env(safe-area-inset-right, 0px));
   bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
@@ -242,13 +242,13 @@ html.js.intro-fx-on .intro-rings {
   -webkit-tap-highlight-color: transparent;
 }
 
-.intro-skip:hover,
-.intro-skip:focus-visible {
+.intro-skip-btn:hover,
+.intro-skip-btn:focus-visible {
   color: #f5f2ea;
   border-color: #e8b979;
 }
 
-.intro-skip:focus-visible {
+.intro-skip-btn:focus-visible {
   outline: 2px solid #e8b979;
   outline-offset: 3px;
 }
