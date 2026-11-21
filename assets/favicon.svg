@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Kahroba">
+  <rect width="32" height="32" rx="8" fill="#0E0E10"/>
+  <g transform="translate(16 16)">
+    <circle r="12.2" fill="#1a140c"/>
+    <path d="M0-12.1 L10.48-6.05 L10.48 6.05 L0 12.1 L-10.48 6.05 L-10.48-6.05 Z" fill="#E8B979"/>
+    <path d="M0-12.1 L10.48-6.05 L5 0 Z" fill="#F3D19A"/>
+    <path d="M10.48-6.05 L10.48 6.05 L5 0 Z" fill="#C9893A"/>
+    <path d="M10.48 6.05 L0 12.1 L5 0 Z" fill="#B86A24"/>
+    <path d="M0 12.1 L-10.48 6.05 L-5 0 Z" fill="#D9A85A"/>
+    <path d="M-10.48 6.05 L-10.48-6.05 L-5 0 Z" fill="#A35C1E"/>
+    <path d="M-10.48-6.05 L0-12.1 L-5 0 Z" fill="#E0B46A"/>
+    <path d="M0-5.2 L4.5-2.6 L4.5 2.6 L0 5.2 L-4.5 2.6 L-4.5-2.6 Z" fill="#0E0E10"/>
+    <path d="M0-2.5 C0-2.5 2.15-0.15 2.15 1.05 A2.15 2.15 0 1 1 -2.15 1.05 C-2.15-0.15 0-2.5 0-2.5 Z" fill="#F3D19A"/>
+  </g>
+</svg>

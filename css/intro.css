@@ -1,0 +1,261 @@
+/* Kahroba intro — local styles only. Timed to about 1.85s, with a 2s safety hide. */
+
+@property --hole {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@property --iris-hole {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: transparent;
+  color: #f5f2ea;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  animation: intro-end 2s linear forwards;
+}
+
+html.intro-playing,
+html.intro-playing body {
+  overflow: hidden;
+}
+
+@keyframes intro-end {
+  0%, 78% { opacity: 1; visibility: visible; }
+  96% { opacity: 0; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+html.intro-skip .intro,
+html.intro-done .intro {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none !important; }
+}
+
+.intro-veil,
+.intro-fx,
+.intro-drop,
+.intro-rings,
+.intro-iris {
+  pointer-events: none;
+}
+
+.intro-veil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #0e0e10;
+  --hole: 0%;
+  -webkit-mask-image: radial-gradient(circle at 50% 48%, transparent var(--hole), #000 calc(var(--hole) + 1px));
+  mask-image: radial-gradient(circle at 50% 48%, transparent var(--hole), #000 calc(var(--hole) + 1px));
+  animation: intro-hole 0.85s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards;
+}
+
+@keyframes intro-hole {
+  from { --hole: 0%; }
+  to { --hole: 80vmax; }
+}
+
+.intro-iris {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: min(16.5rem, 52vmin);
+  height: min(16.5rem, 52vmin);
+  transform: translate(-50%, -50%);
+  display: block;
+  overflow: visible;
+  opacity: 0;
+  --iris-hole: 0%;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent var(--iris-hole), #000 calc(var(--iris-hole) + 1px));
+  mask-image: radial-gradient(circle at 50% 50%, transparent var(--iris-hole), #000 calc(var(--iris-hole) + 1px));
+  animation: intro-iris-vis 1.85s linear forwards,
+             intro-iris-hole 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.08s forwards;
+}
+
+@keyframes intro-iris-hole {
+  from { --iris-hole: 0%; }
+  to { --iris-hole: 62%; }
+}
+
+@keyframes intro-iris-vis {
+  0%, 52% { opacity: 0; transform: translate(-50%, -50%) scale(0.78); }
+  58% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  72% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.intro-blade-g {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  transform: rotate(calc(var(--i) * 60deg));
+}
+
+.intro-blade {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: intro-blade 0.68s cubic-bezier(0.22, 1, 0.36, 1) 1.12s forwards;
+}
+
+@keyframes intro-blade {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(54deg); }
+}
+
+.intro-drop {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 3.35rem;
+  height: 4.5rem;
+  transform: translate(-50%, calc(-50% - 56vh)) scale(0.86, 1.28);
+  transform-origin: 50% 100%;
+  opacity: 0;
+  filter: drop-shadow(0 10px 18px rgba(232, 185, 121, 0.28));
+  will-change: transform, opacity;
+  animation: intro-drop 1.85s linear forwards;
+  z-index: 3;
+}
+
+@keyframes intro-drop {
+  0% {
+    transform: translate(-50%, calc(-50% - 56vh)) scale(0.84, 1.3);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.55, 0.05, 0.92, 0.22);
+  }
+  6% { opacity: 1; }
+  38% {
+    transform: translate(-50%, -50%) scale(0.94, 1.1);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.15, 0.85, 0.3, 1);
+  }
+  42% {
+    transform: translate(-50%, -34%) scale(1.22, 0.58);
+    opacity: 1;
+  }
+  48% {
+    transform: translate(-50%, -58%) scale(0.94, 1.08);
+    opacity: 1;
+  }
+  54% {
+    transform: translate(-50%, -50%) scale(1, 1);
+    opacity: 0.9;
+    animation-timing-function: ease;
+  }
+  68% {
+    transform: translate(-50%, -50%) scale(0.42, 0.42);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.3, 0.3);
+    opacity: 0;
+  }
+}
+
+.intro-rings {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 0;
+  height: 0;
+  z-index: 2;
+}
+
+.intro-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: -0.55rem 0 0 -0.55rem;
+  border: 2px solid rgba(243, 209, 154, 0.85);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.2);
+  animation: intro-ring 1.05s ease-out 0.7s forwards;
+}
+
+.intro-ring:nth-child(2) {
+  border-width: 1.5px;
+  border-color: rgba(232, 185, 121, 0.65);
+  animation-delay: 0.82s;
+}
+
+.intro-ring:nth-child(3) {
+  border-width: 1px;
+  border-color: rgba(184, 106, 36, 0.55);
+  animation-delay: 0.96s;
+}
+
+@keyframes intro-ring {
+  0% { opacity: 0.9; transform: scale(0.15); }
+  100% { opacity: 0; transform: scale(28); }
+}
+
+html.js.intro-fx-on .intro-rings {
+  visibility: hidden;
+}
+
+.intro-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  animation: intro-fx-fade 1.85s linear forwards;
+}
+
+@keyframes intro-fx-fade {
+  0%, 60% { opacity: 1; }
+  82%, 100% { opacity: 0; }
+}
+
+.intro-skip {
+  position: absolute;
+  right: max(0.85rem, env(safe-area-inset-right, 0px));
+  bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
+  z-index: 5;
+  margin: 0;
+  padding: 0.55rem 0.95rem;
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 185, 121, 0.38);
+  background: rgba(14, 14, 16, 0.45);
+  color: #b9b4aa;
+  font: 600 0.85rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.intro-skip:hover,
+.intro-skip:focus-visible {
+  color: #f5f2ea;
+  border-color: #e8b979;
+}
+
+.intro-skip:focus-visible {
+  outline: 2px solid #e8b979;
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .intro-drop {
+    width: 2.85rem;
+    height: 3.85rem;
+  }
+}
